@@ -1,0 +1,32 @@
+name: Mindscape
+options:
+  bundleIdPrefix: com.mindscape
+  deploymentTarget:
+    iOS: "17.0"
+configs:
+  Debug: debug
+  Release: release
+settings:
+  base:
+    PRODUCT_NAME: Mindscape
+    SWIFT_VERSION: 5.10
+targets:
+  Mindscape:
+    type: application
+    platform: iOS
+    configFiles:
+      Debug: Configs/Debug.xcconfig
+      Release: Configs/Release.xcconfig
+    sources:
+      - Sources/Mindscape
+    resources:
+      - assets
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.mindscape.app.ios
+        INFOPLIST_KEY_CFBundleDisplayName: Mindscape
+        INFOPLIST_KEY_UILaunchScreen_Generation: true
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: true
+        INFOPLIST_KEY_UIRequiresFullScreen: false
+        TARGETED_DEVICE_FAMILY: 1
+        SUPPORTS_MACCATALYST: false

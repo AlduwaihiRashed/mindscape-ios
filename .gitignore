@@ -1,0 +1,49 @@
+# Xcode
+.build/
+DerivedData/
+build/
+**/build/
+
+# IDE files
+.idea/
+*.iml
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-aside
+*.xcuserstate
+
+# XcodeGen output if regenerated locally
+Mindscape.xcodeproj/
+
+# Signing and local secrets
+.env
+.env.*
+!.env.example
+Configs/Supabase.xcconfig
+
+# Supabase local state
+.supabase/
+supabase/.temp/
+supabase/.env
+supabase/.env.*
+
+# Logs and temp files
+*.log
+tmp/
+temp/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Tooling
+node_modules/
+Package.resolved
+
+# Generated documentation or exports
+*.swp
+*.swo

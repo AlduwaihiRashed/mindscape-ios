@@ -10,6 +10,10 @@ settings:
   base:
     PRODUCT_NAME: Mindscape
     SWIFT_VERSION: 5.10
+packages:
+  Supabase:
+    url: https://github.com/supabase/supabase-swift.git
+    from: 2.43.1
 targets:
   Mindscape:
     type: application
@@ -21,6 +25,8 @@ targets:
       - Sources/Mindscape
     resources:
       - assets
+    dependencies:
+      - package: Supabase
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.mindscape.app.ios

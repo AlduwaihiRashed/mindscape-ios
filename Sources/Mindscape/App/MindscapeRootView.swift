@@ -8,27 +8,60 @@ struct MindscapeRootView: View {
             NavigationStack {
                 HomeView(appState: appState)
             }
-            .tabItem {
-                Label(MindscapeDestination.home.label, systemImage: "house")
+            .tabItem { Label(MindscapeTab.home.label, systemImage: MindscapeTab.home.systemImage) }
+            .tag(MindscapeTab.home)
+
+            NavigationStack(path: $appState.navigationPath) {
+                AppointmentsView(appState: appState)
+                    .navigationDestination(for: MindscapeDestination.self) { destination in
+                        navigationDestinationView(for: destination)
+                    }
             }
-            .tag(MindscapeDestination.home)
+            .tabItem { Label(MindscapeTab.appointments.label, systemImage: MindscapeTab.appointments.systemImage) }
+            .tag(MindscapeTab.appointments)
 
             NavigationStack {
-                AppointmentsView(appState: appState)
+                BookingRootView(appState: appState)
+                    .navigationDestination(for: MindscapeDestination.self) { destination in
+                        navigationDestinationView(for: destination)
+                    }
             }
-            .tabItem {
-                Label(MindscapeDestination.appointments.label, systemImage: "calendar")
+            .tabItem { Label(MindscapeTab.booking.label, systemImage: MindscapeTab.booking.systemImage) }
+            .tag(MindscapeTab.booking)
+
+            NavigationStack {
+                YourSpaceView(appState: appState)
             }
-            .tag(MindscapeDestination.appointments)
+            .tabItem { Label(MindscapeTab.yourSpace.label, systemImage: MindscapeTab.yourSpace.systemImage) }
+            .tag(MindscapeTab.yourSpace)
 
             NavigationStack {
                 ProfileView(appState: appState)
             }
-            .tabItem {
-                Label(MindscapeDestination.profile.label, systemImage: "person")
-            }
-            .tag(MindscapeDestination.profile)
+            .tabItem { Label(MindscapeTab.profile.label, systemImage: MindscapeTab.profile.systemImage) }
+            .tag(MindscapeTab.profile)
         }
         .tint(BrandPalette.primary)
+        .sheet(item: $appState.loginPrompt) { prompt in
+            LoginSheet(appState: appState, prompt: prompt)
+        }
+    }
+
+    @ViewBuilder
+    private func navigationDestinationView(for destination: MindscapeDestination) -> some View {
+        switch destination {
+        case .therapistDetail(let therapistId):
+            if let therapist = appState.discoveryState.therapists.first(where: { $0.id == therapistId }) {
+                TherapistDetailView(appState: appState, therapist: therapist)
+            } else {
+                ContentUnavailableView("Therapist not found", systemImage: "person.slash")
+            }
+        case .checkout(let bookingId):
+            CheckoutView(appState: appState, bookingId: bookingId)
+        case .sessionDetail(let bookingId):
+            SessionDetailView(appState: appState, bookingId: bookingId)
+        case .liveSession(let bookingId):
+            LiveSessionView(appState: appState, bookingId: bookingId)
+        }
     }
 }

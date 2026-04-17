@@ -25,6 +25,7 @@ Turn the repository from a prepared scaffold into a working iOS app with backend
 - first-pass architecture docs are defined
 - delivery, QA, and deployment guidance are defined
 - the repository contains an iOS scaffold with feature folders, domain models, DTOs, repository protocols, and preview content
+- the app shell now loads through injected dependencies that mirror the Android repo: live Supabase repositories when config is present, unavailable repositories when config is missing, plus preview repositories for local scaffold work
 - `supabase/` contains migrations, seed data, policies, and edge-function scaffolding for payment and session flows
 - guest discovery, auth-gated booking, payment authority, and session access rules are documented
 - final therapist content, live client integration, and release-grade validation are still pending

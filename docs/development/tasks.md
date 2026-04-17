@@ -34,4 +34,6 @@
 - prepared the repository as an iOS implementation kickoff package
 - added iOS project generation config and local xcconfig templates
 - added SwiftUI app skeleton, feature folders, shared models, DTOs, repository contracts, and preview content
+- wired the app shell to injected preview repositories and explicit async screen state for auth, discovery, bookings, profile, and booking availability
+- aligned the iOS repository/container path with the Android repo by adding Supabase-backed repositories, unavailable fallbacks, and package wiring for the same auth, profile, discovery, and booking contracts
 - aligned docs, backend workspace, and repo structure around one MVP delivery path

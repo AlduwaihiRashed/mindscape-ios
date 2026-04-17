@@ -95,7 +95,12 @@ enum MindscapeSampleData {
             status: .confirmed,
             actionLabel: "Join session",
             mode: .video,
-            canCancel: true
+            canCancel: true,
+            priceLabel: "26 KWD",
+            paymentStatusCode: "paid",
+            paymentStatus: "Paid",
+            sessionStatusCode: "scheduled",
+            sessionStatus: "Scheduled"
         ),
         AppointmentSummary(
             id: "a2",
@@ -105,10 +110,12 @@ enum MindscapeSampleData {
             focusArea: "Relationship patterns",
             dateLabel: "Fri, 19 Apr",
             timeLabel: "1:00 PM",
-            status: .confirmed,
-            actionLabel: "Reschedule",
+            status: .pendingPayment,
+            actionLabel: "Complete payment",
             mode: .video,
-            canCancel: true
+            canCancel: true,
+            priceLabel: "24 KWD",
+            holdExpiresAtLabel: "Expires in 14 min"
         )
     ]
 
@@ -124,7 +131,12 @@ enum MindscapeSampleData {
             status: .completed,
             actionLabel: "Rebook",
             mode: .audio,
-            canCancel: false
+            canCancel: false,
+            priceLabel: "22 KWD",
+            paymentStatusCode: "paid",
+            paymentStatus: "Paid",
+            sessionStatusCode: "completed",
+            sessionStatus: "Completed"
         ),
         AppointmentSummary(
             id: "a4",
@@ -137,7 +149,12 @@ enum MindscapeSampleData {
             status: .completed,
             actionLabel: "Rebook",
             mode: .video,
-            canCancel: false
+            canCancel: false,
+            priceLabel: "29 KWD",
+            paymentStatusCode: "paid",
+            paymentStatus: "Paid",
+            sessionStatusCode: "completed",
+            sessionStatus: "Completed"
         )
     ]
 
@@ -192,6 +209,53 @@ enum MindscapeSampleData {
         BookingTimeOption(id: "t3", timeLabel: "2:30 PM", isPopular: false),
         BookingTimeOption(id: "t4", timeLabel: "5:00 PM", isPopular: true),
         BookingTimeOption(id: "t5", timeLabel: "7:30 PM", isPopular: false)
+    ]
+
+    static let sampleAvailabilitySlots: [TherapistAvailabilitySlot] = [
+        TherapistAvailabilitySlot(id: "slot-1", therapistId: "t-1", startsAt: "2026-04-14T10:30:00+03:00", endsAt: "2026-04-14T11:20:00+03:00", dayKey: "2026-04-14", dayLabel: "Today", dateLabel: "14 Apr", timeLabel: "10:30 AM"),
+        TherapistAvailabilitySlot(id: "slot-2", therapistId: "t-1", startsAt: "2026-04-15T12:00:00+03:00", endsAt: "2026-04-15T12:50:00+03:00", dayKey: "2026-04-15", dayLabel: "Tue", dateLabel: "15 Apr", timeLabel: "12:00 PM"),
+        TherapistAvailabilitySlot(id: "slot-3", therapistId: "t-2", startsAt: "2026-04-15T17:00:00+03:00", endsAt: "2026-04-15T17:45:00+03:00", dayKey: "2026-04-15", dayLabel: "Tue", dateLabel: "15 Apr", timeLabel: "5:00 PM"),
+        TherapistAvailabilitySlot(id: "slot-4", therapistId: "t-3", startsAt: "2026-04-16T19:30:00+03:00", endsAt: "2026-04-16T20:30:00+03:00", dayKey: "2026-04-16", dayLabel: "Wed", dateLabel: "16 Apr", timeLabel: "7:30 PM"),
+        TherapistAvailabilitySlot(id: "slot-5", therapistId: "t-4", startsAt: "2026-04-17T14:30:00+03:00", endsAt: "2026-04-17T15:20:00+03:00", dayKey: "2026-04-17", dayLabel: "Thu", dateLabel: "17 Apr", timeLabel: "2:30 PM")
+    ]
+
+    static let sampleGroupSessions: [TherapistGroupSession] = [
+        TherapistGroupSession(
+            id: "gs-1",
+            therapistId: "t-1",
+            title: "Anxiety Management Circle",
+            description: "A guided group session for building tools to manage day-to-day anxiety in a supportive, confidential space.",
+            sessionMode: "video",
+            startsAt: "2026-04-18T18:00:00+03:00",
+            endsAt: "2026-04-18T19:00:00+03:00",
+            dayKey: "2026-04-18",
+            dayLabel: "Fri",
+            dateLabel: "18 Apr",
+            timeLabel: "6:00 PM",
+            maxParticipants: 6
+        ),
+        TherapistGroupSession(
+            id: "gs-2",
+            therapistId: "t-4",
+            title: "Grief Support Group",
+            description: "A compassionate space to process loss alongside others who understand what it means to grieve.",
+            sessionMode: "video",
+            startsAt: "2026-04-19T20:00:00+03:00",
+            endsAt: "2026-04-19T21:00:00+03:00",
+            dayKey: "2026-04-19",
+            dayLabel: "Sat",
+            dateLabel: "19 Apr",
+            timeLabel: "8:00 PM",
+            maxParticipants: 8
+        )
+    ]
+
+    static let quotes: [QuoteCard] = [
+        QuoteCard(id: "q1", text: "Healing often begins with one gentle, honest moment.", author: nil),
+        QuoteCard(id: "q2", text: "You do not have to be perfect to deserve rest.", author: "Unknown"),
+        QuoteCard(id: "q3", text: "Progress is still progress, even when it is quiet.", author: nil),
+        QuoteCard(id: "q4", text: "The bravest thing you can do is ask for help.", author: nil),
+        QuoteCard(id: "q5", text: "Small steps are still steps forward.", author: nil)
     ]
 
     static let homeSnapshot = HomeUISnapshot(
